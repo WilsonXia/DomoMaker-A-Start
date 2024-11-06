@@ -7,11 +7,11 @@ const makerPage = async (req, res) => {
         const docs = await Domo.find(query).select('name age').lean().exec();
 
         return res.render('app', {domos: docs});
-    } catch {
+    } catch (err) {
         console.log(err);
         return res.status(500).json({error: 'Error retrieving domos!'});
     }
-    res.render('app');
+    // res.render('app');
 }
 
 const makeDomo = async (req, res) => {
